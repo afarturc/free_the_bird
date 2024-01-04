@@ -1,0 +1,19 @@
+<div class="grid grid-cols-3 items-center mx-8 bg-white">
+    <%= link_to root_path, class: "flex gap-2 items-center" do %>
+        <%= image_tag "logo", class: "size-10" %>
+        <h1 class="text-2xl font-bold">Free the bird</h1>
+    <% end %>
+    <div class="flex items-center justify-center gap-4">
+        <%= link_to root_path, class: "hover:bg-gray-200 p-4 rounded transition ease-in-out delay-75" do %>
+            <%= icon('fa-solid', 'house', class: "text-2xl") %>
+        <% end %>
+        <%= link_to root_path, class: "hover:bg-gray-200 p-4 rounded transition ease-in-out delay-75" do %>
+            <%= icon('fa-solid', 'magnifying-glass', class: "text-2xl") %>
+        <% end %>
+    </div>
+    <div class="flex items-center justify-end">
+        <%= link_to root_path, class: "" do %>
+            <%= icon('fa-solid', 'bars', class: "text-2xl text-gray-400 hover:text-black transition ease-in-out delay-75") %>
+        <% end %>
+    </div>
+</div>
