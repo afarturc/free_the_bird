@@ -7,3 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+user = User.create!(name: "Artur Correia", username: "afartur", email: "art.afo@outlook.pt", password: "password")
+
+10.times do |i|
+  Chirp.find_or_create_by!(body: "Hello, world #{i}", user: user)
+end
