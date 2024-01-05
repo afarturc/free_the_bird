@@ -12,7 +12,7 @@
     <% if !@chirps.nil? %>
         <div class="flex flex-col items-center justify-center w-full mt-5">
             <% @chirps.each do |chirp| %>
-                <%= render partial: "/shared/chirp_card", locals: { chirp: chirp } %>
+                <%= render partial: "/chirps/chirp_card", locals: { chirp: chirp } %>
             <% end %>
         </div>
     <% end %>

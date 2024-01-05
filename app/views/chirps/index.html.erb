@@ -1,6 +1,6 @@
 <section class="flex flex-col items-center w-full">
-    <%#= render partial: "chirp_form" %>
+    <%= render partial: "chirp_form" %>
     <% @chirps.each do |chirp| %>
-        <%= render partial: "/shared/chirp_card", locals: { chirp: chirp } %>
+        <%= render partial: "chirp_card", locals: { chirp: chirp } %>
     <% end %>
 </section>

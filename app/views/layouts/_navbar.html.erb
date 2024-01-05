@@ -12,8 +12,10 @@
         <% end %>
     </div>
     <div class="flex items-center justify-end">
-        <%= link_to root_path, class: "" do %>
-            <%= icon('fa-solid', 'bars', class: "text-2xl text-gray-400 hover:text-black transition ease-in-out delay-75") %>
+        <% if user_signed_in? %>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "py-2 px-4 border rounded-xl bg-black text-sm text-white font-bold" %>
+        <% else %>
+            <%= button_to "Log in", new_user_session_path, method: :get, class: "py-2 px-4 border rounded-xl bg-black text-sm text-white font-bold" %>
         <% end %>
     </div>
 </div>
