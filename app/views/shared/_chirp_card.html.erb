@@ -1,0 +1,37 @@
+<div class="border-b p-4 sm:2/3 md:w-1/2 w-full">
+    <div class="grid grid-cols-[max-content_1fr] grid-rows-4 auto-cols-auto">
+        <div class="flex items-center row-span-2">
+            <%= image_tag "logo", class: "size-10 border rounded-full drop-shadow-sm" %>
+        </div>
+        <div class="flex items-center justify-between">
+            <p class=" text-sm font-semibold"><%= chirp.user.username %></p>
+            <div class="flex gap-4 items-center">
+                <p class="text-sm text-gray-500"><%= time_ago_in_words chirp.created_at %></p>
+                <%= button_to "like", { class: "group relative -left-2" } do %>
+                    <%= icon('fa-solid', 'ellipsis', class: "text-sm p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
+                <% end %>
+            </div>
+        </div>
+        <div class="flex flex-col gap-2 row-span-2">
+            <%= link_to user_chirp_path(user_id: chirp.user.id, id: chirp.id) do %>
+                <p class="text-sm"><%= chirp.body %></p>
+            <% end %>
+            <div class="flex items-center">
+                <%= button_to "like", { class: "group relative -left-2" } do %>
+                    <%= icon('fa-regular', 'heart', class: "text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
+                <% end %>
+                <%= button_to "comment", { class: "group" } do%>
+                    <%= icon('fa-regular', 'comment', class: "text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
+                <% end %>
+            </div>
+        </div>
+        <div class="row-span-2 pr-14"></div>
+        <div class="flex items-center gap-2">
+            <%= link_to user_chirp_path(user_id: chirp.user.id, id: chirp.id), class: "text-sm text-gray-400" do %>
+                <p class="text-sm text-gray-400"><%= chirp.comments_counter %> comments</p>
+            <% end %>
+            <p class="text-sm text-gray-400">.</p>
+            <p class="text-sm text-gray-400"><%= chirp.likes_counter %> likes</p>
+        </div>
+    </div>
+</div>

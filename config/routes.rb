@@ -8,5 +8,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "chirps#index"
-  resources :chirps
+  resources :users do
+    resources :chirps
+  end
+  get "/search", to: "search#index", as: "search"
 end

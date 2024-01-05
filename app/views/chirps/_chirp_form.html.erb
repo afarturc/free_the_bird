@@ -1,0 +1,5 @@
+<%= form_with model: Chirp.new, class: "flex items-start border-b p-4 sm:2/3 md:w-1/2 w-full" do |form| %>
+    <%= image_tag "logo", class: "size-10 border rounded-full drop-shadow-sm" %>
+    <%= form.text_area :body, placeholder: "Create a chirp", class: "mx-1 min-h-10 h-10 w-full border-0 focus:ring-transparent resize-y" %>
+    <%= form.submit "Chirp", class: "border p-2 rounded-full bg-black text-white text-sm font-bold cursor-pointer" %>
+<% end %>
