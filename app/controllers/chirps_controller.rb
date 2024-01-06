@@ -1,6 +1,6 @@
 class ChirpsController < ApplicationController
   def index
-    @chirps = Chirp.all
+    @chirps = Chirp.order(created_at: :desc)
   end
 
   def show
