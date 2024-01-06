@@ -7,7 +7,7 @@
             <p class=" text-sm font-semibold"><%= chirp.user.username %></p>
             <div class="flex gap-4 items-center">
                 <p class="text-sm text-gray-500"><%= time_ago_in_words chirp.created_at %></p>
-                <%= button_to "like", { class: "group relative -left-2" } do %>
+                <%= button_to "options", { class: "group relative -left-2" } do %>
                     <%= icon('fa-solid', 'ellipsis', class: "text-sm p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
                 <% end %>
             </div>
@@ -17,9 +17,7 @@
                 <p class="text-sm"><%= chirp.body %></p>
             <% end %>
             <div class="flex items-center">
-                <%= button_to "like", { class: "group relative -left-2" } do %>
-                    <%= icon('fa-regular', 'heart', class: "text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
-                <% end %>
+                <%= render partial: "like_button", locals: { chirp: chirp } %>
                 <%= button_to "comment", { class: "group" } do%>
                     <%= icon('fa-regular', 'comment', class: "text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
                 <% end %>
@@ -31,7 +29,7 @@
                 <p class="text-sm text-gray-400"><%= chirp.comments_counter %> comments</p>
             <% end %>
             <p class="text-sm text-gray-400">.</p>
-            <p class="text-sm text-gray-400"><%= chirp.likes_counter %> likes</p>
+            <%= render partial: "likes_counter", locals: { chirp: chirp } %>
         </div>
     </div>
 </div>
