@@ -11,7 +11,9 @@ class ChirpsController < ApplicationController
     @chirp = Chirp.new(chirp_params.merge(user: current_user))
 
     if @chirp.save
-      redirect_to user_chirp_path(user_id: current_user.id, id: @chirp.id)
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.prepend("feed", partial: "chirp_card", locals: { chirp: @chirp }) }
+      end
     else
       render :index
     end

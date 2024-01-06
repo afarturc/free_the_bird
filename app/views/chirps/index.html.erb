@@ -1,6 +1,8 @@
 <section class="flex flex-col items-center w-full">
     <%= render partial: "chirp_form" if user_signed_in? %>
-    <% @chirps.each do |chirp| %>
-        <%= render partial: "chirp_card", locals: { chirp: chirp } %>
-    <% end %>
+    <div class="flex flex-col items-center w-full" id="feed">
+        <% @chirps.each do |chirp| %>
+            <%= render partial: "chirp_card", locals: { chirp: chirp } %>
+        <% end %>
+    </div>
 </section>
