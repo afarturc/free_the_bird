@@ -1,0 +1,27 @@
+<section class="flex flex-col items-center w-full md:w-2/3">
+    <div class="grid grid-cols-3 w-full items-center">
+        <div class="col-span-2">
+            <h2 class="text-xl font-bold"><%= @user.name %></h2>
+            <p class="text-md"><%= @user.username %></p>
+        </div>
+        <div class="flex justify-end">
+            <%= image_tag @user.profile_picture, class: "size-24 rounded-full border backdrop-shadow-sm" %>
+        </div>
+    </div>
+    <div class="flex w-full items-center">
+        <p class="text-md"><%= @user.bio %></p>
+    </div>
+    <div class="grid grid-cols-2 w-full mt-5">
+        <div class="flex justify-center border-b border-black p-2 cursor-pointer">
+            <p class="text-md font-semibold">Chirps</p>
+        </div>
+        <div class="flex justify-center border-b p-2">
+            <p class="text-md font-semibold text-gray-400">Reposts</p>
+        </div>
+    </div>
+    <div class="flex flex-col w-full items-center">
+        <% @chirps.each do |chirp| %>
+            <%= render partial: "chirps/chirp_card", locals: { chirp: chirp } %>
+        <% end %>
+    </div>
+</section>
