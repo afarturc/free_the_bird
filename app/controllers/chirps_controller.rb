@@ -1,4 +1,6 @@
 class ChirpsController < ApplicationController
+  include ActionView::RecordIdentifier
+
   def index
     @chirps = Chirp.order(created_at: :desc)
   end
@@ -16,6 +18,18 @@ class ChirpsController < ApplicationController
       end
     else
       render :index
+    end
+  end
+
+  def destroy
+    @chirp = Chirp.find_by(id: params[:id])
+
+    chirp = @chirp
+
+    if @chirp.destroy
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.remove(dom_id(chirp)) }
+      end
     end
   end
 

@@ -1,10 +1,10 @@
 <%= tag.div id: dom_id(chirp, :like) do %>
     <% if Like.has_user_liked_chirp?(current_user, chirp) %>
-        <%= button_to user_chirp_like_path(user_id: current_user, chirp_id: chirp.id, id: Like.find_by(user_id: current_user, chirp_id: chirp.id)), { class: "group relative -left-2", method: :delete } do %>
+        <%= button_to user_chirp_like_path(user_id: current_user, chirp_id: chirp.id, id: Like.find_by(user_id: current_user, chirp_id: chirp.id)), class: "group relative -left-2", method: :delete do %>
             <%= icon('fa-solid', 'heart', class: "text-red-500 text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
         <% end %>
     <% else %>
-        <%= button_to user_chirp_likes_path(user_id: current_user, chirp_id: chirp), { class: "group relative -left-2", method: :post } do %>
+        <%= button_to user_chirp_likes_path(user_id: current_user, chirp_id: chirp), class: "group relative -left-2", method: :post do %>
             <%= icon('fa-regular', 'heart', class: "text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
         <% end %>
     <% end %>

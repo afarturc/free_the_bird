@@ -1,4 +1,4 @@
-<div class="border-b p-4 w-full">
+<%= tag.div id: dom_id(chirp), class: "border-b p-4 w-full" do %>
     <div class="grid grid-cols-[max-content_1fr] grid-rows-4 auto-cols-auto">
         <%= link_to user_path(chirp.user), class: "flex items-center row-span-2" do %>
             <%= image_tag chirp.user.profile_picture, class: "size-10 border rounded-full drop-shadow-sm" %>
@@ -9,8 +9,10 @@
             <% end %>
             <div class="flex gap-4 items-center">
                 <p class="text-sm text-gray-500"><%= time_ago_in_words chirp.created_at %></p>
-                <%= button_to "options", { class: "group relative -left-2" } do %>
-                    <%= icon('fa-solid', 'ellipsis', class: "text-sm p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
+                <% if current_user == chirp.user %>
+                    <%= button_to user_chirp_path(chirp.user, chirp), class: "group", method: :delete , form: { data: { turbo_confirm: "Are you sure?" } } do %>
+                        <%= icon('fa-solid', 'xmark', class: "text-sm p-2 group-hover:bg-red-500 rounded-full transition ease-in-out delay-75 duration-150") %>
+                    <% end %>
                 <% end %>
             </div>
         </div>
@@ -21,7 +23,7 @@
             <% if user_signed_in? %>
                 <div class="flex items-center">
                     <%= render partial: "chirps/like_button", locals: { chirp: chirp } %>
-                    <%= button_to "comment", { class: "group" } do%>
+                    <%= button_to "comment", class: "group" do %>
                         <%= icon('fa-regular', 'comment', class: "text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
                     <% end %>
                 </div>
@@ -36,4 +38,4 @@
             <%= render partial: "chirps/likes_counter", locals: { chirp: chirp } %>
         </div>
     </div>
-</div>
+<% end %>
