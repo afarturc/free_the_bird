@@ -1,0 +1,5 @@
+<%= tag.div id: dom_id(chirp, :replies_count) do %>
+    <%= link_to user_chirp_path(user_id: chirp.user.id, id: chirp.id), class: "text-sm text-gray-400" do %>
+        <p class="text-sm text-gray-400"><%= chirp.replies_count %> replies</p>
+    <% end %>
+<% end %>

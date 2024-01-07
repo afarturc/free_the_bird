@@ -31,9 +31,7 @@
         </div>
         <div class="row-span-2 pr-14"></div>
         <div class="flex items-center gap-2">
-            <%= link_to user_chirp_path(user_id: chirp.user.id, id: chirp.id), class: "text-sm text-gray-400" do %>
-                <p class="text-sm text-gray-400">comments</p>
-            <% end %>
+            <%= render partial: "chirps/replies_count", locals: { chirp: chirp } %>
             <p class="text-sm text-gray-400">.</p>
             <%= render partial: "chirps/likes_counter", locals: { chirp: chirp } %>
         </div>
