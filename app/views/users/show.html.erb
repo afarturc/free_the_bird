@@ -11,9 +11,11 @@
     <div class="flex w-full items-center">
         <p class="text-md"><%= @user.bio %></p>
     </div>
-    <div class="flex w-full items-center">
-        <%= button_to "Edit Profile", user_path(@user), method: :patch, class: " w-full border p-2 rounded-xl text-sm font-semibold", form_class: "w-full mt-5" %>
-    </div>
+    <% if current_user == @user %>
+        <div class="flex w-full items-center">
+            <%= button_to "Edit Profile", user_path(@user), method: :patch, class: " w-full border p-2 rounded-xl text-sm font-semibold", form_class: "w-full mt-5" %>
+        </div>
+    <% end %>
     <div class="grid grid-cols-2 w-full mt-5">
         <div class="flex justify-center border-b border-black p-2 cursor-pointer">
             <p class="text-md font-semibold">Chirps</p>
