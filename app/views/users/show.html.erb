@@ -2,7 +2,7 @@
     <div class="grid grid-cols-3 w-full items-center">
         <div class="col-span-2">
             <h2 class="text-xl font-bold"><%= @user.name %></h2>
-            <p class="text-md"><%= @user.username %></p>
+            <p class="text-sm mt-1"><%= @user.username %></p>
         </div>
         <div class="flex justify-end">
             <%= image_tag @user.profile_picture, class: "size-24 rounded-full border backdrop-shadow-sm" %>
@@ -10,6 +10,9 @@
     </div>
     <div class="flex w-full items-center">
         <p class="text-md"><%= @user.bio %></p>
+    </div>
+    <div class="flex w-full items-center">
+        <%= button_to "Edit Profile", user_path(@user), method: :patch, class: " w-full border p-2 rounded-xl text-sm font-semibold", form_class: "w-full mt-5" %>
     </div>
     <div class="grid grid-cols-2 w-full mt-5">
         <div class="flex justify-center border-b border-black p-2 cursor-pointer">

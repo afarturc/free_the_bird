@@ -1,5 +1,5 @@
 <section class="flex flex-col items-center w-full md:w-2/3">
-    <%= render partial: "chirp_form" if user_signed_in? %>
+    <%= render partial: "chirp_form", locals: { url_path: user_chirps_path(current_user.id), placeholder_text: "Create a chirp..." } if user_signed_in? %>
     <div class="flex flex-col items-center w-full" id="feed">
         <% @chirps.each do |chirp| %>
             <%= render partial: "chirp_card", locals: { chirp: chirp } %>

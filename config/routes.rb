@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :chirps do
       resources :likes, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
+      post :reply
     end
   end
 

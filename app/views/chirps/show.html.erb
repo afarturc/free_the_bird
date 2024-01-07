@@ -1,3 +1,9 @@
 <div class="flex flex-col items-center w-full md:w-2/3">
     <%= render partial: "chirp_card", locals: { chirp: @chirp } %>
+    <%= render partial: "chirp_form", locals: { url_path: user_chirp_reply_path(@chirp.user, @chirp), placeholder_text: "Reply to #{@chirp.user.username}..." } if user_signed_in? %>
+    <div class="flex w-full" id="replies">
+        <% @replies.each do |reply| %>
+            <%= render partial: "chirp_card", locals: { chirp: reply } %>
+        <% end %>
+    </div>
 </div>

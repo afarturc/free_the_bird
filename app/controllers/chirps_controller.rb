@@ -6,7 +6,8 @@ class ChirpsController < ApplicationController
   end
 
   def show
-    @chirp = Chirp.find_by(id: params[:id])
+    @chirp = Chirp.find(params[:id])
+    @replies = Chirp.find(params[:id]).reply_chirps
   end
 
   def create
@@ -21,8 +22,20 @@ class ChirpsController < ApplicationController
     end
   end
 
+  def reply
+    @chirp = Chirp.create(chirp_params.merge(user: current_user, parent_chirp: Chirp.find(params[:chirp_id])))
+
+    if @chirp.save
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.prepend("replies", partial: "chirp_card", locals: { chirp: @chirp }) }
+      end
+    else
+      render :show
+    end
+  end
+
   def destroy
-    @chirp = Chirp.find_by(id: params[:id])
+    @chirp = Chirp.find(params[:id])
 
     chirp = @chirp
 
