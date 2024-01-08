@@ -1,4 +1,4 @@
-<%= form_with model: Chirp.new, url: url_path, method: :post, class: "flex items-start border-b p-4 w-full" do |form| %>
+<%= form_with model: Chirp.new, url: url_path, method: :post, class: "flex items-start border-b p-4 w-full", data: { controller: "form-reset", action: "turbo:submit-end->form-reset#reset" } do |form| %>
     <%= image_tag current_user.profile_picture, class: "size-10 border rounded-full drop-shadow-sm" %>
     <%= form.text_area :body, placeholder: placeholder_text, class: "mx-1 min-h-10 h-10 w-full border-0 focus:ring-transparent resize-y" %>
     <%= form.submit "Chirp", class: "border p-2 rounded-full bg-black text-white text-sm font-bold cursor-pointer" %>

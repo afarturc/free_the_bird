@@ -23,7 +23,7 @@
             <% if user_signed_in? %>
                 <div class="flex items-center">
                     <%= render partial: "chirps/like_button", locals: { chirp: chirp } %>
-                    <%= button_to "comment", class: "group" do %>
+                    <%= link_to user_chirp_path(chirp.user, chirp), class: "group" do %>
                         <%= icon('fa-regular', 'comment', class: "text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
                     <% end %>
                 </div>

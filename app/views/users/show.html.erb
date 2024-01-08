@@ -9,11 +9,14 @@
         </div>
     </div>
     <div class="flex w-full items-center">
-        <p class="text-md"><%= @user.bio %></p>
+        <p class="text-sm"><%= @user.bio %></p>
     </div>
     <% if current_user == @user %>
-        <div class="flex w-full items-center">
-            <%= button_to "Edit Profile", user_path(@user), method: :patch, class: " w-full border p-2 rounded-xl text-sm font-semibold", form_class: "w-full mt-5" %>
+        <div data-controller="edit-profile-dialog" class="flex w-full items-center mt-5">
+            <button data-action="click->edit-profile-dialog#showEdit" class="w-full border p-2 rounded-xl text-sm font-semibold">
+                Edit Profile
+            </button>
+            <%= render partial: "edit_profile_modal" , locals: { user: current_user } %>
         </div>
     <% end %>
     <div class="grid grid-cols-2 w-full mt-5">
