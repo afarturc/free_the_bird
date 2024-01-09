@@ -19,17 +19,13 @@
             <%= render partial: "edit_profile_modal" , locals: { user: current_user } %>
         </div>
     <% end %>
-    <div class="grid grid-cols-2 w-full mt-5">
-        <div class="flex justify-center border-b border-black p-2 cursor-pointer">
-            <p class="text-md font-semibold">Chirps</p>
+    <%= turbo_frame_tag "user_#{@user.id}_chirps", class: "flex flex-col w-full items-center" do %>
+        <div class="grid grid-cols-2 w-full mt-5">
+            <%= link_to "Chirps", user_path(@user), data: { turbo_frame: "user_#{@user.id}_chirps" }, class: "flex justify-center border-b text-md font-semibold border-black" %>
+            <%= link_to "Reposts", user_rechirps_path(@user), data: { turbo_frame: "user_#{@user.id}_rechirps" }, class: "flex justify-center border-b text-md font-semibold text-gray-400" %>
         </div>
-        <div class="flex justify-center border-b p-2">
-            <p class="text-md font-semibold text-gray-400">Reposts</p>
-        </div>
-    </div>
-    <div class="flex flex-col w-full items-center">
         <% @chirps.each do |chirp| %>
             <%= render partial: "chirps/chirp_card", locals: { chirp: chirp } %>
         <% end %>
-    </div>
+    <% end %>
 </section>

@@ -7,4 +7,8 @@ module ApplicationHelper
     user_id = params[:id].to_i
     controller_name == link_name && current_user.id == user_id ? "text-black" : "text-gray-400"
   end
+
+  def user_profile_tab_link(tab_link)
+    controller_name == tab_link ? "border-black" : "text-gray-400"
+  end
 end

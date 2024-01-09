@@ -13,8 +13,10 @@ Rails.application.routes.draw do
     resources :chirps do
       resources :likes, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
+      resources :rechirps, only: [:create, :destroy]
       post :reply
     end
+    get :rechirps, to: "rechirps#index"
   end
 
   get "/search", to: "search#index", as: "search"

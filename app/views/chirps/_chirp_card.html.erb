@@ -26,6 +26,7 @@
                     <%= link_to user_chirp_path(chirp.user, chirp), class: "group" do %>
                         <%= icon('fa-regular', 'comment', class: "text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
                     <% end %>
+                    <%= render partial: "chirps/rechirp_button", locals: { chirp: chirp } %>
                 </div>
             <% end %>
         </div>

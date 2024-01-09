@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_07_180716) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_08_203450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_07_180716) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "rechirps", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chirp_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chirp_id"], name: "index_rechirps_on_chirp_id"
+    t.index ["user_id"], name: "index_rechirps_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -84,4 +93,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_07_180716) do
   add_foreign_key "chirps", "users"
   add_foreign_key "likes", "chirps"
   add_foreign_key "likes", "users"
+  add_foreign_key "rechirps", "chirps"
+  add_foreign_key "rechirps", "users"
 end

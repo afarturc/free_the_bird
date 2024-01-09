@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "user_#{@user.id}_chirps", class: "flex flex-col w-full items-center" do %>
+    <div class="grid grid-cols-2 w-full mt-5">
+        <%= link_to "Chirps", user_path(@user), data: { turbo_frame: "user_#{@user.id}_chirps" }, class: "flex justify-center border-b text-md font-semibold text-gray-400" %>
+        <%= link_to "Reposts", user_rechirps_path(@user), data: { turbo_frame: "user_#{@user.id}_rechirps" }, class: "flex justify-center border-b border-black text-md font-semibold" %>
+    </div>
+    <% @chirps.each do |chirp| %>
+        <%= render partial: "chirps/chirp_card", locals: { chirp: chirp } %>
+    <% end %>
+<% end %>

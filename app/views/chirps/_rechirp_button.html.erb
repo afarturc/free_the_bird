@@ -1,0 +1,11 @@
+<%= tag.div id: dom_id(chirp, :rechirp), class: "ml-1" do %>
+    <% if Rechirp.has_user_rechirped?(current_user, chirp) %>
+        <%= button_to user_chirp_rechirp_path(user_id: current_user, chirp_id: chirp, id: Rechirp.find_by(user_id: current_user, chirp_id: chirp.id)), class: "group", method: :delete do %>
+            <%= icon('fa-solid', 'retweet', class: "text-green-500 text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
+        <% end %>
+    <% else %>
+        <%= button_to user_chirp_rechirps_path(user_id: current_user, chirp_id: chirp), class: "group", method: :post do %>
+            <%= icon('fa-solid', 'retweet', class: "text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
+        <% end %>
+    <% end %>
+<% end %>
