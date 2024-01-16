@@ -1,10 +1,10 @@
 <%= tag.div id: dom_id(chirp), class: "border-b p-4 w-full" do %>
     <div class="grid grid-cols-[max-content_1fr] grid-rows-4 auto-cols-auto">
-        <%= link_to user_path(chirp.user), class: "flex items-center row-span-2" do %>
+        <%= link_to user_path(chirp.user), class: "flex items-center row-span-2", data: {turbo: "false"} do %>
             <%= image_tag chirp.user.profile_picture, class: "size-10 border rounded-full drop-shadow-sm" %>
         <% end %>
         <div class="flex items-center justify-between">
-            <%= link_to user_path(chirp.user) do %>
+            <%= link_to user_path(chirp.user), data: {turbo: "false"} do %>
                 <p class=" text-sm font-semibold"><%= chirp.user.username %></p>
             <% end %>
             <div class="flex gap-2 items-center">
@@ -17,13 +17,13 @@
             </div>
         </div>
         <div class="flex flex-col gap-2 row-span-2">
-            <%= link_to user_chirp_path(user_id: chirp.user.id, id: chirp.id) do %>
+            <%= link_to user_chirp_path(user_id: chirp.user.id, id: chirp.id), data: {turbo: "false"} do %>
                 <p class="text-sm"><%= chirp.body %></p>
             <% end %>
             <% if user_signed_in? %>
                 <div class="flex items-center">
                     <%= render partial: "chirps/like_button", locals: { chirp: chirp } %>
-                    <%= link_to user_chirp_path(chirp.user, chirp), class: "group" do %>
+                    <%= link_to user_chirp_path(chirp.user, chirp), class: "group", data: {turbo: "false"} do %>
                         <%= icon('fa-regular', 'comment', class: "text-xl p-2 group-hover:bg-gray-100 rounded-full transition ease-in-out delay-75 duration-150") %>
                     <% end %>
                     <%= render partial: "chirps/rechirp_button", locals: { chirp: chirp } %>
