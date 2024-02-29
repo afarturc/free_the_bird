@@ -3,7 +3,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     name { Faker::FunnyName.name }
     username { Faker::Internet.username }
-    password { Faker::Internet.passowrd }
+    password { Faker::Internet.password }
     bio { Faker::Lorem.sentence }
   end
 end
